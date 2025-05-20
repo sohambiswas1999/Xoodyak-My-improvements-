@@ -131,7 +131,7 @@ static const uint8_t maskRhoEast2[64] = {
 	a0=XOR3(a0,e,p);									\
 	a1=XOR3(a1,e,p);									\
 	a2=XOR3(a2,e,p);									\
-	/*Dump("theta");*/										\
+	/*Dump("theta");*/									\
 												\
 	a1=_mm512_shuffle_epi32(a1,0x93);							\
 	a2=ROL32(a2,11);									\
@@ -139,13 +139,13 @@ static const uint8_t maskRhoEast2[64] = {
 												\
 												\
 	a0=XOR512(a0,_mm512_set_epi32(0,0,0,(__rc),0,0,0,(__rc),0,0,0,(__rc),0,0,0,(__rc)));	\
-	/*Dump("iota");*/										\
+	/*Dump("iota");*/									\
 												\
 												\
 	a0=Chi(a0,a1,a2);									\
 	a1=Chi(a1,a2,a0);									\
 	a2=Chi(a2,a0,a1);									\
-	/*Dump("chi");*/										\
+	/*Dump("chi");*/									\
 												\
 												\
 	a1=ROL32(a1,1);										\
@@ -195,6 +195,56 @@ uint32_t input[48] = {0xB2275BE8, 0x6A657F3D, 0x636CA821, 0xFF7DDEDD,
 	Round(_rc11);					\
 	Round(_rc12);					
 
+#define TimesTwelve_rounds				\
+	Round(_rc1);					\
+	Round(_rc2);					\
+	Round(_rc3);					\
+	Round(_rc4);					\
+	Round(_rc5);					\
+	Round(_rc6);					\
+	Round(_rc7);					\
+	Round(_rc8);					\
+	Round(_rc9);					\
+	Round(_rc10);					\
+	Round(_rc11);					\
+	Round(_rc12);					\
+	Round(_rc1);					\
+	Round(_rc2);					\
+	Round(_rc3);					\
+	Round(_rc4);					\
+	Round(_rc5);					\
+	Round(_rc6);					\
+	Round(_rc7);					\
+	Round(_rc8);					\
+	Round(_rc9);					\
+	Round(_rc10);					\
+	Round(_rc11);					\
+	Round(_rc12);					\
+	Round(_rc1);					\
+	Round(_rc2);					\
+	Round(_rc3);					\
+	Round(_rc4);					\
+	Round(_rc5);					\
+	Round(_rc6);					\
+	Round(_rc7);					\
+	Round(_rc8);					\
+	Round(_rc9);					\
+	Round(_rc10);					\
+	Round(_rc11);					\
+	Round(_rc12);					\
+	Round(_rc1);					\
+	Round(_rc2);					\
+	Round(_rc3);					\
+	Round(_rc4);					\
+	Round(_rc5);					\
+	Round(_rc6);					\
+	Round(_rc7);					\
+	Round(_rc8);					\
+	Round(_rc9);					\
+	Round(_rc10);					\
+	Round(_rc11);					\
+	Round(_rc12);					
+
 void main()
 {	
 	Xoodoo_align128plain32_state data;
@@ -219,6 +269,7 @@ void main()
 	
 	//Round(_rc1);
 	//Twelve_rounds
+	//MEASURE(TimesTwelve_rounds);
 	MEASURE(Twelve_rounds);
 	printf("%f,%f,%f",RDTSC_clk_min ,RDTSC_clk_median,RDTSC_clk_max );
 	

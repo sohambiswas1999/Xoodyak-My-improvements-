@@ -215,14 +215,14 @@ void main()
 
     // memcpy(tempst, &input, 4);
 
-    printf("%08x\n", input[1]);
+//    printf("%08x\n", input[1]);
 
-    printf("%08x", state->A[1]);
+   // printf("%08x", state->A[1]);
 
     DeclareVars;
     State2Vars;
     Vars2State;
-    Dump3("initial");
+    //Dump3("initial");
     MEASURE(Twelve_rounds);
     printf("%f,%f,%f",RDTSC_clk_min ,RDTSC_clk_median,RDTSC_clk_max );
     /*for(int count=0;count<10;count++)
@@ -235,7 +235,7 @@ void main()
     //Twelve_rounds
     Dump3("rho east");
 
-    Vars2State;
+    //Vars2State;
 
-    printf("%08x", state->A[1]);
+    //printf("%08x", state->A[1]);
 }
